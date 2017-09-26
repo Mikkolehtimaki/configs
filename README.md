@@ -1,4 +1,4 @@
-# configs
+# Configs
 
 ## Neovim
 
@@ -6,7 +6,7 @@ Neovim has to be built with python and python3 support. Python package 'neovim' 
 
 ### Plugin Manager
 
-Install dein. See https://github.com/Shougo/dein.vim for instructions.
+Install dein with ~/.vim/plugins as the plugin directory. See https://github.com/Shougo/dein.vim for instructions. Paths in the init.nvim file have to be modified to point to this directory (subdirectories after plugins/ should not need to be changed).
 
 ### Dependencies
 
