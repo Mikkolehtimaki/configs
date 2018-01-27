@@ -184,3 +184,9 @@ set termguicolors
 colorscheme gruvbox
 set background=dark
 let g:gruvbox_contrast_dark='dark'
+
+" Arrow keys resize panes
+nnoremap <Left> :vertical resize -1<CR>
+nnoremap <Right> :vertical resize +1<CR>
+nnoremap <Up> :resize -1<CR>
+nnoremap <Down> :resize +1<CR>
