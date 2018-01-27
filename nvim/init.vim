@@ -5,11 +5,11 @@ filetype off                  " required
 if &compatible
   set nocompatible
 endif
-set runtimepath+=/Users/mileht/.vim/plugins/repos/github.com/Shougo/dein.vim
-if dein#load_state('/Users/mileht/.vim/plugins')
-  call dein#begin('/Users/mileht/.vim/plugins')
+set runtimepath+=/home/mikko/.vim/plugins/repos/github.com/Shougo/dein.vim
+if dein#load_state('/home/mikko/.vim/plugins')
+  call dein#begin('/home/mikko/.vim/plugins')
 
-  call dein#add('/Users/mileht/.vim/plugins/repos/github.com/Shougo/dein.vim')
+  call dein#add('/home/mikko/.vim/plugins/repos/github.com/Shougo/dein.vim')
   call dein#add('Shougo/neocomplete.vim')
   call dein#add('tpope/vim-fugitive')
   call dein#add('majutsushi/tagbar')
@@ -29,6 +29,10 @@ if dein#load_state('/Users/mileht/.vim/plugins')
   call dein#add('ctrlpvim/ctrlp.vim')
   call dein#add('w0rp/ale')
   call dein#add('ivanov/vim-ipython')
+  call dein#add('jiangmiao/auto-pairs')
+
+  " color themes
+  call dein#add('morhetz/gruvbox')
 
   call dein#end()
   call dein#save_state()
@@ -71,7 +75,7 @@ au BufNewFile,BufRead *.py
 
 " Dont depend on locale settings with language
 set encoding=utf-8
-language en_US
+language en_US.UTF-8
 
 " Share clipboard with OS
 set clipboard=unnamed
@@ -128,6 +132,8 @@ let g:ale_fixers = {
 
 " Deoplete completion options
 let g:deoplete#enable_at_startup = 1
+let g:deoplete#sources#jedi#show_docstring = 1
+let g:deoplete#sources#jedi#python_path = "/usr/bin/python3"
 
 " PYTHON MODE
 let g:pymode_python = 'python3'
@@ -138,9 +144,6 @@ let g:jedi#documentation_command = "gh"
 " Use deoplete for async completions and 
 " jedi-vim only for documentation
 let g:jedi#completions_enabled = 0
-
-let g:deoplete#sources#jedi#show_docstring = 1
-let g:deoplete#sources#jedi#python_path = "/usr/local/bin/python3"
 
 " Linting and fixing
 nnoremap <Leader>lo :lopen<Return>
@@ -176,4 +179,8 @@ inoremap <expr> <C-Space> pumvisible() \|\| &omnifunc == '' ?
 \ "\" \\<lt>bs>\\<lt>C-n>\"\<CR>"
 imap <C-@> <C-Space>
 
-
+" Colorsettings
+set termguicolors
+colorscheme gruvbox
+set background=dark
+let g:gruvbox_contrast_dark='dark'
