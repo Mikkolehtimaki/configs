@@ -210,3 +210,5 @@ nnoremap <Down> :resize +1<CR>
 let g:vimwiki_list=[{'path': '/home/mikko/onedrive/wiki/', 'syntax': 'markdown', 'ext': '.wiki'}, {'path': '/home/mikko/googledrive/wiki/', 'syntax': 'markdown', 'ext': '.wiki'}]
 "autocmd BufRead,BufNewFile *.wiki ts=4 sw=autocmd BufRead,BufNewFile *.wiki ts=4 sw=4
 autocmd FileType vimwiki setlocal ts=2 sts=2 sw=2 expandtab tw=80
+" Search for tags corresponding to word under cursor
+nnoremap <Leader>tt :VimwikiSearchTags <C-R><C-W><Return>
