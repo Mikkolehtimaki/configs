@@ -30,9 +30,12 @@ if dein#load_state('/home/mikko/.vim/plugins')
   call dein#add('w0rp/ale')
   call dein#add('ivanov/vim-ipython')
   call dein#add('jiangmiao/auto-pairs')
+  call dein#add('vimwiki/vimwiki')
 
   " color themes
   call dein#add('morhetz/gruvbox')
+  call dein#add('tomasiser/vim-code-dark')
+  call dein#add('arcticicestudio/nord-vim')
 
   call dein#end()
   call dein#save_state()
@@ -94,8 +97,9 @@ while i <= 9
 endwhile
 
 " Create splits with vq and hq
-nnoremap <Leader>wvs :vsplit<Return>
-nnoremap <Leader>whs :split<Return>
+nnoremap <Leader>vs :vsplit<Return>
+" default window split to vertical
+nnoremap <Leader>hs :split<Return>
 
 " Deal with files that need sudo to write with w!!
 cmap w!! w !sudo tee % >/dev/null
@@ -181,12 +185,26 @@ imap <C-@> <C-Space>
 
 " Colorsettings
 set termguicolors
-colorscheme gruvbox
-set background=dark
-let g:gruvbox_contrast_dark='dark'
+colorscheme nord
+" let g:nord_comment_brightness=2
+augroup nord-overrides
+    autocmd!
+    autocmd ColorScheme nord highlight Comment ctermfg=169 guifg=HotPink2
+augroup END
+
+" gruvbox
+" colorscheme gruvbox
+" set background=dark
+" let g:gruvbox_contrast_dark='dark'
 
 " Arrow keys resize panes
 nnoremap <Left> :vertical resize -1<CR>
 nnoremap <Right> :vertical resize +1<CR>
 nnoremap <Up> :resize -1<CR>
 nnoremap <Down> :resize +1<CR>
+
+" vimwiki configs
+let g:vimwiki_list=[{'path': '/home/mikko/onedrive/wiki/', 'syntax': 'markdown', 'ext': '.wiki'}, {'path': '/home/mikko/googledrive/wiki/', 'syntax': 'markdown', 'ext': '.wiki'}]
+"autocmd BufRead,BufNewFile *.wiki ts=4 sw=autocmd BufRead,BufNewFile *.wiki ts=4 sw=4
+autocmd FileType vimwiki setlocal ts=2 sts=2 sw=2 expandtab tw=80
+
