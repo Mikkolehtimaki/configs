@@ -188,12 +188,12 @@ nnoremap <Leader>gp :Gpush<Return>
 
 " Colorsettings
 set termguicolors
-colorscheme nord
 " let g:nord_comment_brightness=2
 augroup nord-overrides
     autocmd!
     autocmd ColorScheme nord highlight Comment ctermfg=169 guifg=HotPink2
 augroup END
+colorscheme nord
 
 " gruvbox
 " colorscheme gruvbox
@@ -210,4 +210,3 @@ nnoremap <Down> :resize +1<CR>
 let g:vimwiki_list=[{'path': '/home/mikko/onedrive/wiki/', 'syntax': 'markdown', 'ext': '.wiki'}, {'path': '/home/mikko/googledrive/wiki/', 'syntax': 'markdown', 'ext': '.wiki'}]
 "autocmd BufRead,BufNewFile *.wiki ts=4 sw=autocmd BufRead,BufNewFile *.wiki ts=4 sw=4
 autocmd FileType vimwiki setlocal ts=2 sts=2 sw=2 expandtab tw=80
-
