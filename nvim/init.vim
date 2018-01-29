@@ -183,6 +183,9 @@ inoremap <expr> <C-Space> pumvisible() \|\| &omnifunc == '' ?
 \ "\" \\<lt>bs>\\<lt>C-n>\"\<CR>"
 imap <C-@> <C-Space>
 
+nnoremap <Leader>gs :Gstatus<Return>
+nnoremap <Leader>gp :Gpush<Return>
+
 " Colorsettings
 set termguicolors
 colorscheme nord
