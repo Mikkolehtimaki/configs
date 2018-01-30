@@ -31,6 +31,7 @@ if dein#load_state('/home/mikko/.vim/plugins')
   call dein#add('ivanov/vim-ipython')
   call dein#add('jiangmiao/auto-pairs')
   call dein#add('vimwiki/vimwiki')
+  call dein#add('tpope/vim-surround')
 
   " color themes
   call dein#add('morhetz/gruvbox')
@@ -212,3 +213,6 @@ let g:vimwiki_list=[{'path': '/home/mikko/onedrive/wiki/', 'syntax': 'markdown',
 autocmd FileType vimwiki setlocal ts=2 sts=2 sw=2 expandtab tw=80
 " Search for tags corresponding to word under cursor
 nnoremap <Leader>tt :VimwikiSearchTags <C-R><C-W><Return>
+" Swap mappings for diary index and new diary entry
+nmap <Leader>w<Leader>w <Plug>VimwikiDiaryIndex
+nmap <Leader>wi <Plug>VimwikiMakeDiaryNote
