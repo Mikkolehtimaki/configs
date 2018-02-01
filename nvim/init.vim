@@ -26,12 +26,13 @@ if dein#load_state('/home/mikko/.vim/plugins')
   call dein#add('Vimjas/vim-python-pep8-indent')
   call dein#add('scrooloose/nerdtree')
   call dein#add('ihacklog/hicursorwords')
-  call dein#add('ctrlpvim/ctrlp.vim')
   call dein#add('w0rp/ale')
   call dein#add('ivanov/vim-ipython')
   call dein#add('jiangmiao/auto-pairs')
   call dein#add('vimwiki/vimwiki')
   call dein#add('tpope/vim-surround')
+  call dein#add('junegunn/fzf', { 'build': './install --all', 'merged': 0  }) 
+  call dein#add('junegunn/fzf.vim', { 'depends': 'fzf'  })
 
   " color themes
   call dein#add('morhetz/gruvbox')
@@ -228,3 +229,7 @@ nnoremap <Leader>tt :VimwikiSearchTags <C-R><C-W><Return>
 " Swap mappings for diary index and new diary entry
 nmap <Leader>w<Leader>w <Plug>VimwikiDiaryIndex
 nmap <Leader>wi <Plug>VimwikiMakeDiaryNote
+
+" fzf config
+nnoremap <C-P> :Files<cr>
+nnoremap <Leader><C-P> :Files<Space>~
