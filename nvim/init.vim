@@ -63,7 +63,7 @@ set smartcase
 set incsearch   " show search matches when typing a search term
 set showmatch
 set hlsearch
-" clear search with space space
+" clear search with leader space
 nnoremap <leader><space> :noh<cr>  
 
 " Leader to <space>
@@ -76,6 +76,8 @@ ino jj <esc>
 cno jj <c-c>
 vno v <esc>
 
+" cd to dir of current file
+nnoremap <leader>cd :cd %:p:h<CR>
 " Esc to terminal mode
 tnoremap <Esc> <C-\><C-n>
 
@@ -171,6 +173,11 @@ nnoremap <Leader>lo :lopen<Return>
 nnoremap <Leader>lc :lclose<Return>
 nnoremap <Leader>ln :lnext<Return>
 nnoremap <Leader>lp :lprevious<Return>
+" same for quickfix
+nnoremap <Leader>co :copen<Return>
+nnoremap <Leader>cc :cclose<Return>
+nnoremap <Leader>cn :cnext<Return>
+nnoremap <Leader>cp :cprevious<Return>
 
 " Tagbar
 nmap <Leader>tb :TagbarToggle<CR>
