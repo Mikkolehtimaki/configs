@@ -50,8 +50,20 @@ syntax enable
 " CUSTOM SETTINGS BEGIN
 syntax on	
 set number
-set incsearch   " show search matches when typing a search term
 set showcmd
+
+" Change regex to python formatting
+" nnoremap / /\v
+" vnoremap / /\v
+
+" case-smart search
+set ignorecase
+set smartcase
+set incsearch   " show search matches when typing a search term
+set showmatch
+set hlsearch
+" clear search with space space
+nnoremap <leader><space> :noh<cr>  
 
 " Leader to <space>
 let mapleader=" "
