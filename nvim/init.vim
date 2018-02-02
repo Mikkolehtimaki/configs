@@ -240,3 +240,7 @@ nmap <Leader>wi <Plug>VimwikiMakeDiaryNote
 " fzf config
 nnoremap <C-P> :Files<cr>
 nnoremap <Leader><C-P> :Files<Space>~
+
+" Quick date hotkey
+nnoremap <Leader>ts :r!date<cr>
+
