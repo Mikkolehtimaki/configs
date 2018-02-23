@@ -192,6 +192,8 @@ let NERDTreeDirArrows = 1
 
 " Do pep8 formatting when formatting paragraphs
 au FileType python setlocal formatprg=autopep8\ -
+" Map formatting of chapter to leader-gq
+nnoremap <Leader>gq gq}
 
 " UltiSnps
 let g:UltiSnipsExpandTrigger="<tab>"
@@ -230,7 +232,7 @@ nnoremap <Down> :resize +1<CR>
 " vimwiki configs
 let g:vimwiki_list=[{'path': '/home/mikko/onedrive/wiki/', 'syntax': 'markdown', 'ext': '.wiki'}, {'path': '/home/mikko/googledrive/wiki/', 'syntax': 'markdown', 'ext': '.wiki'}]
 "autocmd BufRead,BufNewFile *.wiki ts=4 sw=autocmd BufRead,BufNewFile *.wiki ts=4 sw=4
-autocmd FileType vimwiki setlocal ts=2 sts=2 sw=2 expandtab tw=80
+autocmd FileType vimwiki setlocal ts=2 sts=2 sw=2 expandtab tw=80 syntax=markdown
 " Search for tags corresponding to word under cursor
 nnoremap <Leader>tt :VimwikiSearchTags <C-R><C-W><Return>
 " Swap mappings for diary index and new diary entry
@@ -243,4 +245,9 @@ nnoremap <Leader><C-P> :Files<Space>~
 
 " Quick date hotkey
 nnoremap <Leader>ts :r!date<cr>
+
+" Evaluate visual mode selection in python
+vnoremap <Leader>py :w !python3<cr>
+" In normal mode, run file in python
+nnoremap <Leader>py :w !python3<cr>
 
