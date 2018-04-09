@@ -253,3 +253,18 @@ vnoremap <Leader>py :w !python3<cr>
 " In normal mode, run file in python
 nnoremap <Leader>py :w !python3<cr>
 
+" If ripgrep is installed, use that with :grep
+" Note that :vim uses a different program
+if executable('rg')
+	set grepprg=rg\ --vimgrep
+endif
+
+" Add FZF support for ripgrep
+command! -bang -nargs=* Rg
+	\ call fzf#vim#grep(
+	\   'rg --column --line-number --no-heading --color=always --follow '.shellescape(<q-args>), 1,
+	\   <bang>0 ? fzf#vim#with_preview('up:60%')
+	\           : fzf#vim#with_preview('right:50%', '?'),
+	\   <bang>0)
+
+nnoremap <C-k> :Rg 
