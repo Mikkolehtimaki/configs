@@ -27,7 +27,6 @@ if dein#load_state('/home/mikko/.vim/plugins')
   call dein#add('scrooloose/nerdtree')
   call dein#add('ihacklog/hicursorwords')
   call dein#add('w0rp/ale')
-  call dein#add('ivanov/vim-ipython')
   call dein#add('jiangmiao/auto-pairs')
   call dein#add('vimwiki/vimwiki')
   call dein#add('tpope/vim-surround')
@@ -52,6 +51,9 @@ syntax enable
 syntax on	
 set number
 set showcmd
+
+" Set python3 provider, to ensure neovim is not needed in every venv
+let g:python3_host_prog='/usr/bin/python3'
 
 " Change regex to python formatting
 " nnoremap / /\v
