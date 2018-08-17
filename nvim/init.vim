@@ -34,8 +34,6 @@ if dein#load_state('/home/mikko/.vim/plugins')
   call dein#add('junegunn/fzf.vim', { 'depends': 'fzf'  })
 
   " color themes
-  call dein#add('morhetz/gruvbox')
-  call dein#add('tomasiser/vim-code-dark')
   call dein#add('arcticicestudio/nord-vim')
 
   call dein#end()
@@ -163,6 +161,7 @@ let g:pymode_python = 'python3'
 " Jedi vim
 let g:jedi#force_py_version = 3
 let g:jedi#documentation_command = "gh"
+let g:jedi#show_call_signatures = 1
 " Use deoplete for async completions and 
 " jedi-vim only for documentation
 let g:jedi#completions_enabled = 0
@@ -234,7 +233,7 @@ nnoremap <Down> :resize +1<CR>
 " vimwiki configs
 let g:vimwiki_list=[{'path': '/home/mikko/onedrive/wiki/', 'syntax': 'markdown', 'ext': '.wiki'}, {'path': '/home/mikko/googledrive/wiki/', 'syntax': 'markdown', 'ext': '.wiki'}]
 "autocmd BufRead,BufNewFile *.wiki ts=4 sw=autocmd BufRead,BufNewFile *.wiki ts=4 sw=4
-autocmd FileType vimwiki setlocal ts=2 sts=2 sw=2 expandtab tw=80 syntax=markdown
+autocmd FileType vimwiki setlocal ts=2 sts=2 sw=2 expandtab tw=120 syntax=markdown
 " Search for tags corresponding to word under cursor
 nnoremap <Leader>tt :VimwikiSearchTags <C-R><C-W><Return>
 " Swap mappings for diary index and new diary entry
@@ -268,3 +267,6 @@ command! -bang -nargs=* Rg
 	\   <bang>0)
 
 nnoremap <C-k> :Rg 
+
+" Beautify live search and replace
+set icm=split
