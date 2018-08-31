@@ -145,12 +145,18 @@ set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.pyc/*        " Linux/MacOSX
 let g:ale_linters = {
 \   'python': ['pylint', 'autopep8'],
 \}
-
 let g:ale_fixers = {
 \   'python': ['pylint', 'autopep8'],
 \}
+let g:ale_completion_enabled = 1
 
 " Deoplete completion options
+" call deoplete#custom#option({
+" \   'ignore_sources': {'_': 'tags'},
+" \ })
+let g:deoplete#sources = {
+            \ '_': ['omni', 'jedi', 'buffer', 'member', 'ultisnips', 'file']
+            \}
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#sources#jedi#show_docstring = 1
 let g:deoplete#sources#jedi#python_path = "/usr/bin/python3"
@@ -243,6 +249,8 @@ nmap <Leader>wi <Plug>VimwikiMakeDiaryNote
 " fzf config
 nnoremap <C-P> :Files<cr>
 nnoremap <Leader><C-P> :Files<Space>~
+nnoremap <Leader>l :Lines<cr>
+nnoremap <Leader>bl :BLines<cr>
 
 " Quick date hotkey
 nnoremap <Leader>ts :r!date<cr>
@@ -270,3 +278,6 @@ nnoremap <C-k> :Rg
 
 " Beautify live search and replace
 set icm=split
+
+" To show echodoc with more space, increase cmd height
+set cmdheight=2
