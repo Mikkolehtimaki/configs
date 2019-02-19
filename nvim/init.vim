@@ -32,6 +32,7 @@ if dein#load_state('/home/mikko/.vim/plugins')
   call dein#add('tpope/vim-surround')
   call dein#add('junegunn/fzf', { 'build': './install --all', 'merged': 0  }) 
   call dein#add('junegunn/fzf.vim', { 'depends': 'fzf'  })
+  call dein#add('JuliaEditorSupport/julia-vim', { 'depends': 'fzf'  })
 
   " color themes
   call dein#add('arcticicestudio/nord-vim')
@@ -51,7 +52,7 @@ set number
 set showcmd
 
 " Set python3 provider, to ensure neovim is not needed in every venv
-let g:python3_host_prog='/usr/bin/python3'
+let g:python3_host_prog='/home/mikko/.virtualenvs/neovim/bin/python'
 
 " Change regex to python formatting
 " nnoremap / /\v
@@ -87,7 +88,6 @@ au BufNewFile,BufRead *.py
     \ set tabstop=4 |
     \ set softtabstop=4 |
     \ set shiftwidth=4 |
-    \ set textwidth=79 |
     \ set expandtab |
     \ set autoindent |
     \ set fileformat=unix
@@ -159,7 +159,7 @@ let g:deoplete#sources = {
             \}
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#sources#jedi#show_docstring = 1
-let g:deoplete#sources#jedi#python_path = "/usr/bin/python3"
+" let g:deoplete#sources#jedi#python_path = "/usr/bin/python3"
 
 " PYTHON MODE
 let g:pymode_python = 'python3'
@@ -237,7 +237,7 @@ nnoremap <Up> :resize -1<CR>
 nnoremap <Down> :resize +1<CR>
 
 " vimwiki configs
-let g:vimwiki_list=[{'path': '/home/mikko/onedrive/wiki/', 'syntax': 'markdown', 'ext': '.wiki'}, {'path': '/home/mikko/googledrive/wiki/', 'syntax': 'markdown', 'ext': '.wiki'}]
+let g:vimwiki_list=[{'path': '/home/mikko/wiki/', 'syntax': 'markdown', 'ext': '.wiki'}, {'path': '/home/mikko/googledrive/wiki/', 'syntax': 'markdown', 'ext': '.wiki'}]
 "autocmd BufRead,BufNewFile *.wiki ts=4 sw=autocmd BufRead,BufNewFile *.wiki ts=4 sw=4
 autocmd FileType vimwiki setlocal ts=2 sts=2 sw=2 expandtab tw=120 syntax=markdown
 " Search for tags corresponding to word under cursor
@@ -281,3 +281,7 @@ set icm=split
 
 " To show echodoc with more space, increase cmd height
 set cmdheight=2
+
+" Julia setup
+au BufRead,BufNewFile *.jl set filetype=julia
+autocmd FileType julia setlocal ts=4 sts=4 sw=4 expandtab tw=80 syntax=julia
