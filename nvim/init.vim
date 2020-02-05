@@ -1,50 +1,37 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
-" DEIN SETTINGS BEGIN
-if &compatible
-  set nocompatible
-endif
-set runtimepath+=/home/mikko/.vim/plugins/repos/github.com/Shougo/dein.vim
-if dein#load_state('/home/mikko/.vim/plugins')
-  call dein#begin('/home/mikko/.vim/plugins')
+" VIMPLUG BEGINS
+call plug#begin()
 
-  call dein#add('/home/mikko/.vim/plugins/repos/github.com/Shougo/dein.vim')
-  call dein#add('Shougo/neocomplete.vim')
-  call dein#add('tpope/vim-fugitive')
-  call dein#add('majutsushi/tagbar')
-  " call dein#add('python-mode/python-mode')
-  call dein#add('tpope/vim-commentary')
+  Plug 'Shougo/neocomplete.vim'
+  Plug 'tpope/vim-fugitive'
+  Plug 'majutsushi/tagbar'
+  " call dein#add('python-mode/python-mode'
+  Plug 'tpope/vim-commentary'
   " Snippet engine and python snippets separately
-  call dein#add('SirVer/ultisnips')
-  call dein#add('honza/vim-snippets')
+  " Plug 'SirVer/ultisnips'
+  " Plug 'honza/vim-snippets'
   " Completion engine
-  call dein#add('Shougo/deoplete.nvim')
-  call dein#add('davidhalter/jedi')
-  call dein#add('zchee/deoplete-jedi')
-  call dein#add('davidhalter/jedi-vim')
-  call dein#add('Vimjas/vim-python-pep8-indent')
-  call dein#add('scrooloose/nerdtree')
-  call dein#add('ihacklog/hicursorwords')
-  call dein#add('w0rp/ale')
-  call dein#add('jiangmiao/auto-pairs')
-  call dein#add('vimwiki/vimwiki')
-  call dein#add('tpope/vim-surround')
-  call dein#add('junegunn/fzf', { 'build': './install --all', 'merged': 0  }) 
-  call dein#add('junegunn/fzf.vim', { 'depends': 'fzf'  })
-  call dein#add('JuliaEditorSupport/julia-vim', { 'depends': 'fzf'  })
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'davidhalter/jedi'
+  Plug 'zchee/deoplete-jedi'
+  Plug 'davidhalter/jedi-vim'
+  Plug 'Vimjas/vim-python-pep8-indent'
+  Plug 'scrooloose/nerdtree'
+  Plug 'ihacklog/hicursorwords'
+  Plug 'w0rp/ale'
+  Plug 'jiangmiao/auto-pairs'
+  Plug 'vimwiki/vimwiki'
+  Plug 'tpope/vim-surround'
+  Plug 'junegunn/fzf', { 'build': './install --all', 'merged': 0  } 
+  Plug 'junegunn/fzf.vim', { 'depends': 'fzf'  }
+  " Plug 'JuliaEditorSupport/julia-vim', { 'depends': 'fzf'  }
 
   " color themes
-  call dein#add('arcticicestudio/nord-vim')
+  Plug 'arcticicestudio/nord-vim'
 
-  call dein#end()
-  call dein#save_state()
-endif
-
-": call dein#install() will update all plugins
-
-filetype plugin indent on
-syntax enable
+call plug#end()
 
 " CUSTOM SETTINGS BEGIN
 syntax on	
