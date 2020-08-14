@@ -10,8 +10,8 @@ call plug#begin()
   " call dein#add('python-mode/python-mode'
   Plug 'tpope/vim-commentary'
   " Snippet engine and python snippets separately
-  " Plug 'SirVer/ultisnips'
-  " Plug 'honza/vim-snippets'
+  Plug 'SirVer/ultisnips'
+  Plug 'honza/vim-snippets'
   " Completion engine
   Plug 'Shougo/deoplete.nvim'
   Plug 'davidhalter/jedi'
@@ -19,13 +19,16 @@ call plug#begin()
   Plug 'davidhalter/jedi-vim'
   Plug 'Vimjas/vim-python-pep8-indent'
   Plug 'scrooloose/nerdtree'
-  Plug 'ihacklog/hicursorwords'
+  " Plug 'ihacklog/hicursorwords'
   Plug 'w0rp/ale'
   Plug 'jiangmiao/auto-pairs'
   Plug 'vimwiki/vimwiki'
   Plug 'tpope/vim-surround'
-  Plug 'junegunn/fzf', { 'build': './install --all', 'merged': 0  } 
+  " Plug 'junegunn/fzf', { 'build': './install --all', 'merged': 0  } 
+  Plug '~/.fzf'
   Plug 'junegunn/fzf.vim', { 'depends': 'fzf'  }
+  Plug 'daeyun/vim-matlab'
+
   " Plug 'JuliaEditorSupport/julia-vim', { 'depends': 'fzf'  }
 
   " color themes
@@ -39,7 +42,8 @@ set number
 set showcmd
 
 " Set python3 provider, to ensure neovim is not needed in every venv
-let g:python3_host_prog='/home/mikko/.virtualenvs/neovim/bin/python'
+let g:python3_host_prog='/opt/lintula/worktmp/lehtimam/envs/neovim/bin/python'
+let g:python2_host_prog='/opt/lintula/worktmp/lehtimam/envs/py2nvim/bin/python'
 
 " Change regex to python formatting
 " nnoremap / /\v
@@ -77,14 +81,15 @@ au BufNewFile,BufRead *.py
     \ set shiftwidth=4 |
     \ set expandtab |
     \ set autoindent |
-    \ set fileformat=unix
+    \ set fileformat=unix |
+    \ set tw=79
 
 " Dont depend on locale settings with language
 set encoding=utf-8
 language en_US.UTF-8
 
 " Share clipboard with OS
-set clipboard=unnamed
+set clipboard+=unnamedplus
 
 let python_highlight_all=1
 set t_Co=256
@@ -100,9 +105,9 @@ while i <= 9
 endwhile
 
 " Create splits with vq and hq
-nnoremap <Leader>vs :vsplit<Return>
+nnoremap <Leader>vs :split<Return>
 " default window split to vertical
-nnoremap <Leader>hs :split<Return>
+nnoremap <Leader>hs :vsplit<Return>
 
 " Deal with files that need sudo to write with w!!
 cmap w!! w !sudo tee % >/dev/null
@@ -133,7 +138,7 @@ let g:ale_linters = {
 \   'python': ['pylint', 'autopep8'],
 \}
 let g:ale_fixers = {
-\   'python': ['pylint', 'autopep8'],
+\   'python': ['black'],
 \}
 let g:ale_completion_enabled = 1
 
@@ -147,9 +152,6 @@ let g:deoplete#sources = {
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#sources#jedi#show_docstring = 1
 " let g:deoplete#sources#jedi#python_path = "/usr/bin/python3"
-
-" PYTHON MODE
-let g:pymode_python = 'python3'
 
 " Jedi vim
 let g:jedi#force_py_version = 3
@@ -224,9 +226,9 @@ nnoremap <Up> :resize -1<CR>
 nnoremap <Down> :resize +1<CR>
 
 " vimwiki configs
-let g:vimwiki_list=[{'path': '/home/mikko/wiki/', 'syntax': 'markdown', 'ext': '.wiki'}, {'path': '/home/mikko/googledrive/wiki/', 'syntax': 'markdown', 'ext': '.wiki'}]
+let g:vimwiki_list=[{'path': '/home/lehtimam/onedrive/wiki/', 'syntax': 'markdown', 'ext': '.wiki'}, {'path': '/home/lehtimam/googledrive/wiki/', 'syntax': 'markdown', 'ext': '.wiki'}]
 "autocmd BufRead,BufNewFile *.wiki ts=4 sw=autocmd BufRead,BufNewFile *.wiki ts=4 sw=4
-autocmd FileType vimwiki setlocal ts=2 sts=2 sw=2 expandtab tw=120 syntax=markdown
+autocmd FileType vimwiki setlocal ts=2 sts=2 sw=2 expandtab tw=80 syntax=markdown
 " Search for tags corresponding to word under cursor
 nnoremap <Leader>tt :VimwikiSearchTags <C-R><C-W><Return>
 " Swap mappings for diary index and new diary entry
@@ -269,6 +271,10 @@ set icm=split
 " To show echodoc with more space, increase cmd height
 set cmdheight=2
 
-" Julia setup
+" Other filetype settings
 au BufRead,BufNewFile *.jl set filetype=julia
 autocmd FileType julia setlocal ts=4 sts=4 sw=4 expandtab tw=80 syntax=julia
+autocmd FileType markdown setlocal ts=4 sts=4 sw=4 expandtab tw=80 syntax=markdown
+let g:tex_flavor = "latex"
+let g:tex_conceal = ""
+
